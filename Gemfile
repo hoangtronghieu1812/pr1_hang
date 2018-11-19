@@ -29,6 +29,7 @@ gem "jquery-rails"
 gem "materialize-sass"
 gem "font-awesome-rails"
 gem "i18n-js"
+<<<<<<< HEAD
 gem "devise"
 gem "figaro"
 gem "omniauth-google-oauth2"
