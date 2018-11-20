@@ -29,7 +29,6 @@ gem "jquery-rails"
 gem "materialize-sass"
 gem "font-awesome-rails"
 gem "i18n-js"
-<<<<<<< HEAD
 gem "devise"
 gem "figaro"
 gem "omniauth-google-oauth2"
@@ -37,6 +36,8 @@ gem "cancancan"
 gem "ransack"
 gem "gmaps4rails"
 gem "gon"
+gem "friendly_id"
+gem "social-share-button"
 
 group :development, :test do
   gem "sqlite3", "1.3.13"
