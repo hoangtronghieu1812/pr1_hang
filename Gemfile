@@ -38,6 +38,7 @@ gem "gmaps4rails"
 gem "gon"
 gem "friendly_id"
 gem "social-share-button"
+gem "searchkick"
 
 group :development, :test do
   gem "sqlite3", "1.3.13"
