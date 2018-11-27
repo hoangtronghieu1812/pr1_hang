@@ -14,6 +14,7 @@ Book.create!(title:  "Tokyo Hoàng Đạo Án",
              publisher: "Nhã Nam",
              price: 160000,
              quantity_in_store: "6",
+             image: Rails.root.join("app/assets/images/kyoto.jpg").open,
              category_id: "1",
              description: "Theo chân Lôi Mễ đi qua 2 cuốn tiểu thuyết, khả năng phân tích phán đoán tâm lý của mình cũng có tiến bộ đôi chút. Phải nói rằng, lúc đầu, có quá nhiều chi tiết, có quá nhiều nhân vật và mình không thể xâu chuỗi và tìm ra thủ phạm. Suy nghĩ cả buổi chiều, cuối cùng, suy đoán của mình cũng đúng.Khi tấm màn bí mật lộ ra, mình thật sự thật sự hạnh phúc và vui mừng. Không phải mừng vì truyện hay và vui mừng vì khả năng phán đoán ban đầu của mình rất chính xác. ")
 
@@ -22,6 +23,7 @@ Book.create!(title:  "Phía sau nghi can X",
              publisher: "Nhã Nam",
              price: 190000,
              quantity_in_store: "2",
+             image: Rails.root.join("app/assets/images/book2.jpg").open,
              category_id: "2",
              description: "Việc Togashi đột ngột xuất hiện sau 5 năm li dị đã thay đổi cuộc đời Yasuki hoàn toàn, gã đeo bám chị không dứt, buổi tối định mệnh đó sau một hồi giằng co chị vô tình giết Togashi. ")
 
@@ -30,6 +32,7 @@ Book.create!(title:  "Bạch Dạ Hành",
              publisher: "Nhã Nam",
              price: 190000,
              quantity_in_store: "3",
+             image: Rails.root.join("app/assets/images/book4.jpg").open,
              category_id: "3",
              description: "Việc Togashi đột ngột xuất hiện sau 5 năm li dị đã thay đổi cuộc đời Yasuki hoàn toàn, gã đeo bám chị không dứt, buổi tối định mệnh đó sau một hồi giằng co chị vô tình giết Togashi. ")
 
@@ -38,14 +41,16 @@ Book.create!(title:  "Đứa trẻ hư",
              publisher: "Nhã Nam",
              price: 190000,
              quantity_in_store: "4",
+             image: Rails.root.join("app/assets/images/book5.jpg").open,
              category_id: "4",
              description: "Việc Togashi đột ngột xuất hiện sau 5 năm li dị đã thay đổi cuộc đời Yasuki hoàn toàn, gã đeo bám chị không dứt, buổi tối định mệnh đó sau một hồi giằng co chị vô tình giết Togashi. ")
 
-Book.create!(title:  "Bill Gates: Tham Vọng Lớn Lao Và Quá Trình Hình Thành Đế Chế Microsoft (Tái Bản 2017)",
+Book.create!(title:  "Bill Gates: Tham Vọng Lớn Lao Và Phía Quá Trình Hình Thành Đế Chế Microsoft (Tái Bản 2017)",
              id: "5",
              publisher: "Nhã Nam",
              price: 190000,
              quantity_in_store: "5",
+             image: Rails.root.join("app/assets/images/book6.jpg").open,
              category_id: "5",
              description: "Việc Togashi đột ngột xuất hiện sau 5 năm li dị đã thay đổi cuộc đời Yasuki hoàn toàn, gã đeo bám chị không dứt, buổi tối định mệnh đó sau một hồi giằng co chị vô tình giết Togashi. ")
 
@@ -54,19 +59,21 @@ Book.create!(title:  "Steve Jobs - Những Bí Quyết Đổi Mới Và Sáng T�
              publisher: "Nhã Nam",
              price: 190000,
              quantity_in_store: "6",
+             image: Rails.root.join("app/assets/images/book11.jpg").open,
              category_id: "1",
              description: "Việc Togashi đột ngột xuất hiện sau 6 năm li dị đã thay đổi cuộc đời Yasuki hoàn toàn, gã đeo bám chị không dứt, buổi tối định mệnh đó sau một hồi giằng co chị vô tình giết Togashi. ")
 
 7.upto(25) do |n|
-  title = "book#{n}"
+  title = "Book #{n}"
   publisher = "Publisher-#{n+1}"
   des = "Book-#{n} description"
   Book.create!(title: title,
-             publisher: "Nhã Nam",
-             price: 190000,
-             quantity_in_store: rand(1..10),
-             category_id: rand(1..5),
-             description: des)
+               publisher: "Nhã Nam",
+               price: 190000,
+               quantity_in_store: rand(1..10),
+               image: Rails.root.join("app/assets/images/book#{n}.jpg").open,
+               category_id: rand(1..5),
+               description: des)
 end
 
 5.times do |n|
@@ -85,13 +92,13 @@ User.create! name: "Admin",
 
 
 20.times do |n|
-name  = FFaker::Name.name
-User.create! name: name,
-             email: "user#{n+1}@example.com",
-             password: "111111",
-             password_confirmation: "111111",
-             dob: "1/1/1991",
-             payment_id: 1
+  name  = FFaker::Name.name
+  User.create! name: name,
+               email: "user#{n+1}@example.com",
+               password: "111111",
+               password_confirmation: "111111",
+               dob: "1/1/1991",
+               payment_id: 1
 end
 
 User.create! name: "Admin1",
@@ -114,7 +121,7 @@ User.create! name: "Admin2",
   name = FFaker::Name.name
   birthday = "10/10/1960"
   Author.create! name: name,
-                birthday: birthday
+                 birthday: birthday
 end
 
 15.times do |n|
@@ -126,7 +133,7 @@ end
   name = FFaker::Name.name
   birthday = "10/10/1960"
   Author.create! name: name,
-                birthday: birthday
+                 birthday: birthday
 end
 
 15.times do |n|
@@ -134,20 +141,9 @@ end
 end
 
 10.times do |n|
-   AuthorBook.create!(book_id: n+10, author_id: rand(1..10))
+  AuthorBook.create!(book_id: n+10, author_id: rand(1..10))
 end
 
 Place.create! name: 'HTbookstore', description: 'HTbookstore chỉ có Hiếu là chăm chỉ bán sách, còn Thảo thì không', latitude: '21.022983', longitude: '105.807902'
 
 Place.create! name: 'HTbookstore', description: 'HTbookstore chỉ có Hiếu là chăm chỉ bán sách, còn Thảo thì không', latitude: "35.7100627", longitude: '139.8085117'
-
-25.times do |n, id|
-  id = rand(1..10)
-  Blog.create!  title: "Blog#{n+1} ve cuon sach cuc ky hay",
-                description: "Blog#{n+1} : Nếu đã từng, bạn có nhớ tới những nỗi ám ảnh thời đại học luôn giày vò anh chàng Phương Mộc nhân vật chính “Đề Thi Đẫm Máu? Cái chết của cô bạn gái Trần Hy?? Vụ cháy của căn phòng ký túc 352?? Tất cả những quá khứ đó sẽ được bày mở trong cuốn tiểu thuyết",
-                auth_link: "https://www.railstutorial.org/book/advanced_login",
-                body: "Blog#{n+1} : Nếu đã từng, bạn có nhớ tới những nỗi ám ảnh thời đại học luôn giày vò anh chàng Phương Mộc nhân vật chính “Đề Thi Đẫm Máu? Cái chết của cô bạn gái Trần Hy?? Vụ cháy của căn phòng ký túc 352?? Tất cả những quá khứ đó sẽ được bày mở trong cuốn tiểu thuyết",
-                user_id: id,
-                author: User.find_by(id: id).name,
-                date: Time.current
-end
