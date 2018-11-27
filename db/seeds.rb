@@ -23,7 +23,7 @@ Book.create!(title:  "Phía sau nghi can X",
              publisher: "Nhã Nam",
              price: 190000,
              quantity_in_store: "2",
-             image: Rails.root.join("app/assets/images/book2.jpg").open,
+              image: Rails.root.join("app/assets/images/book2.jpg").open,
              category_id: "2",
              description: "Việc Togashi đột ngột xuất hiện sau 5 năm li dị đã thay đổi cuộc đời Yasuki hoàn toàn, gã đeo bám chị không dứt, buổi tối định mệnh đó sau một hồi giằng co chị vô tình giết Togashi. ")
 
@@ -68,12 +68,12 @@ Book.create!(title:  "Steve Jobs - Những Bí Quyết Đổi Mới Và Sáng T�
   publisher = "Publisher-#{n+1}"
   des = "Book-#{n} description"
   Book.create!(title: title,
-               publisher: "Nhã Nam",
-               price: 190000,
-               quantity_in_store: rand(1..10),
-               image: Rails.root.join("app/assets/images/book#{n}.jpg").open,
-               category_id: rand(1..5),
-               description: des)
+             publisher: "Nhã Nam",
+             price: 190000,
+             quantity_in_store: rand(1..10),
+             image: Rails.root.join("app/assets/images/book#{n}.jpg").open,
+             category_id: rand(1..5),
+             description: des)
 end
 
 5.times do |n|

@@ -1,5 +1,5 @@
 class Book < ApplicationRecord
-  searchkick word_start: [:title], highlight: [:title]
+  searchkick highlight: [:title]
   has_many :comments
   has_many :likes_from_users, class_name: Emotion.name, dependent: :destroy
   has_many :users_liked, through: :likes_from_users, source: :user

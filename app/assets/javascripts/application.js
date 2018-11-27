@@ -20,3 +20,4 @@
 //= require i18n/translations
 
 //= require create_comment
+//= require login_dialog

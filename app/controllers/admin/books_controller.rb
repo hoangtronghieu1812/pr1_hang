@@ -1,6 +1,7 @@
 class Admin::BooksController < Admin::BaseController
   before_action :load_book, only: %i(edit update)
   before_action :load_categories, :load_authors, only: %i(new edit)
+  before_action :reindex_book, only %i(update destroy)
 
   def index
     @pagy, @books = pagy Book.order_by_created.search(params[:search])
@@ -74,5 +75,9 @@ class Admin::BooksController < Admin::BaseController
 
   def load_authors
     @authors = Author.select_author
+  end
+
+  def reindex_book
+    Book.reindex
   end
 end

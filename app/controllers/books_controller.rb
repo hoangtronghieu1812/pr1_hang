@@ -18,7 +18,7 @@ class BooksController < ApplicationController
       @pagy, @books = pagy Book.order_by_created.filter_by_book_type(params[:category])
     elsif params[:search_book]
       @pagy, @books = pagy_searchkick(Book.search(params[:search_book],
-        {fields: [:title], highlight: true}))
+        {fields: [:title], highlight: true, operator: "and"}))
 
     elsif params[:term]
       @books = Book.search_by_title(params[:term])

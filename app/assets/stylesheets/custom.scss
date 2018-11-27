@@ -959,10 +959,13 @@ button {
 .gmap-content{
   width: 800px;
   height: 400px;
+}
+
 em {
   background: yellow;
 }
 
+<<<<<<< be62289f9fbd6df6da032d2c570a9ff9bae5f490
 .fb-2{
   padding: 76px 0px 0px 50px;
 }
@@ -994,4 +997,10 @@ em {
   width: 44px;
   margin: 38px 0 0 13px;
   font-size: 20px;
+}
+
+.category-custom{
+  a:hover, a:active {
+    background-color: red;
+  }
 }
