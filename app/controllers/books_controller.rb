@@ -10,16 +10,18 @@ class BooksController < ApplicationController
 
   def index
     @owl_books = Book.most_liked
-    @books = Book.order_by_created.filter_by_book_type(params[:category])
-      .page(params[:page]).per Settings.book.per_page
 
     @search = Book.ransack(params[:q])
-    @books = @search.result.includes(:category).page(params[:page]).per Settings.book.per_page
+    @pagy, @books = pagy @search.result.includes(:category)
 
-    if params[:search_book]
-      @books = Book.search(params[:search_book], fields: [:title], highlight: true)
+    if params[:category]
+      @pagy, @books = pagy Book.order_by_created.filter_by_book_type(params[:category])
+    elsif params[:search_book]
+      @pagy, @books = pagy_searchkick(Book.search(params[:search_book],
+        {fields: [:title], highlight: true}))
+
     elsif params[:term]
-      @books = Book.search_by_title(params[:term]).page(params[:page]).per(Settings.book.per_page)
+      @books = Book.search_by_title(params[:term])
       render json: @books.map(&:title)
     end
   end
