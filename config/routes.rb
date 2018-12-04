@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
-  root "books#index"
+  root "cosmetics#index"
   mount Ckeditor::Engine => "/ckeditor"
   get "/home", to: "static_pages#home"
   get "/about", to: "static_pages#about"
@@ -15,22 +15,22 @@ Rails.application.routes.draw do
   resources :cart_items
   resources :orders
   resources :users do
-    resources :favorite_books, only: [:index]
+    resources :favorite_cosmetics, only: [:index]
   end
   resources :emotions, only: [:destroy, :create]
   resources :blogs
-  resources :books, only: [:index, :show]
+  resources :cosmetics, only: [:index, :show]
   resources :emotions, only: [:destroy, :create]
   resources :authors, only: [:index]
   namespace :admin do
-    resources :books
+    resources :cosmetics
     resources :users, except: [:edit]
     resources :authors, only: [:index]
     resources :xmls, only: [:index]
   end
-  resources :books do
+  resources :cosmetics do
     resources :comments
-    collection {post :search, to: "books#index"}
+    collection {post :search, to: "cosmetics#index"}
   end
 
 end
