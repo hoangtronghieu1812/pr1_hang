@@ -5,7 +5,7 @@ class CreateBlogs < ActiveRecord::Migration[5.1]
       t.string :title
       t.string :author
       t.string :date
-      t.string :description
+      t.text :description
       t.string :auth_link
       t.text   :body
       t.timestamps

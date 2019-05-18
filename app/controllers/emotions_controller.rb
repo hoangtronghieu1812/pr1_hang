@@ -9,7 +9,7 @@ class EmotionsController < ApplicationController
   end
 
   def destroy
-    @cosmetic = Emotion.find_by(params[:id]).cosmetic
+    @cosmetic = Emotion.find_by(id: params[:id]).cosmetic
     current_user.unlike @cosmetic
     respond_to do |format|
       format.html { redirect_to cosmetic_path(@cosmetic) }

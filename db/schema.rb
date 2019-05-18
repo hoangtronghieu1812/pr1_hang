@@ -12,12 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2018_12_04_023844) do
 
-  create_table "blogs", force: :cascade do |t|
-    t.integer "user_id"
+  create_table "blogs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
     t.string "title"
     t.string "author"
     t.string "date"
-    t.string "description"
+    t.text "description"
     t.string "auth_link"
     t.text "body"
     t.datetime "created_at", null: false
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2018_12_04_023844) do
     t.index ["user_id"], name: "index_blogs_on_user_id"
   end
 
-  create_table "cart_items", force: :cascade do |t|
+  create_table "cart_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "quantity"
     t.float "paideach"
     t.integer "cart_id"
@@ -41,14 +41,14 @@ ActiveRecord::Schema.define(version: 2018_12_04_023844) do
     t.index ["cosmetic_id"], name: "index_cart_items_on_cosmetic_id"
   end
 
-  create_table "categories", force: :cascade do |t|
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "ckeditor_assets", force: :cascade do |t|
+  create_table "ckeditor_assets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "data_file_name", null: false
     t.string "data_content_type"
     t.integer "data_file_size"
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2018_12_04_023844) do
     t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
-  create_table "comments", force: :cascade do |t|
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content"
     t.integer "user_id"
     t.integer "cosmetic_id"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2018_12_04_023844) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "cosmetics", force: :cascade do |t|
+  create_table "cosmetics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.float "price"
     t.integer "quantity_in_store"
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 2018_12_04_023844) do
     t.integer "like", default: 0
   end
 
-  create_table "emotions", force: :cascade do |t|
+  create_table "emotions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.boolean "like"
     t.boolean "dislike"
     t.integer "user_id"
@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 2018_12_04_023844) do
     t.index ["user_id"], name: "index_emotions_on_user_id"
   end
 
-  create_table "orders", force: :cascade do |t|
+  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "phone_number"
     t.string "address"
     t.float "total"
@@ -107,14 +107,14 @@ ActiveRecord::Schema.define(version: 2018_12_04_023844) do
     t.integer "payment_id"
   end
 
-  create_table "payments", force: :cascade do |t|
+  create_table "payments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "payment_type"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "places", force: :cascade do |t|
+  create_table "places", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.float "latitude"
@@ -123,21 +123,21 @@ ActiveRecord::Schema.define(version: 2018_12_04_023844) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "relationships", force: :cascade do |t|
+  create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "followed_id"
     t.integer "follower_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "trademarks", force: :cascade do |t|
+  create_table "trademarks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false
@@ -158,4 +158,5 @@ ActiveRecord::Schema.define(version: 2018_12_04_023844) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "blogs", "users"
 end
